@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
 });
 /* user model create */
 const UserModel = mongoose.model('Employees', userSchema)
-
+/* For add new employee entry in the database or return the error*/
 exports.addEmployee = (req, callback) => {
     const newMessage = new UserModel({
         firstName: req.body.firstName,
@@ -31,8 +31,17 @@ exports.addEmployee = (req, callback) => {
         email: req.body.email
 
     });
-    
+
     newMessage.save(req.body).then((result) => {
+        return callback(null, result)
+
+    }).catch((err) => {
+        return callback(err)
+    })
+}
+/* getting the all the entry of employee in the database */
+exports.getEmployeeInfo = (req, callback) => {
+    UserModel.find().then((result) => {
         return callback(null, result)
 
     }).catch((err) => {

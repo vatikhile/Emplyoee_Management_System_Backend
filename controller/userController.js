@@ -16,3 +16,18 @@ module.exports.addEmployee = (req, res) => {
         }
     })
 }
+module.exports.getEmployeeInfo = (req, res) => {
+    service.getEmployeeInfo(req, (err, data) => {
+        if (err) {
+
+            return err;
+        } else {
+
+            return res.json({
+                status: true,
+                message: 'sucess',
+                data,
+            })
+        }
+    })
+}

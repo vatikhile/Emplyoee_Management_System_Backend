@@ -14,6 +14,18 @@ module.exports.addEmployee = (req, callback) => {
     })
 
 }
+module.exports.getEmployeeInfo = (req, callback) => {
 
+    data.getEmployeeInfo(req, (err, data) => {
+        if (err) {
+            return callback(err)
+
+        } else {
+            return callback(null, data)
+        }
+
+    })
+
+}
 
 
