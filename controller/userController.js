@@ -1,33 +1,44 @@
 
 const service = require('../Service/userService');
+try {
+    module.exports.addEmployee = (req, res) => {
+        service.addEmployee(req, (err, data) => {
+            if (err) {
 
-module.exports.addEmployee = (req, res) => {
-    service.addEmployee(req, (err, data) => {
-        if (err) {
+                return err;
+            } else {
 
-            return err;
-        } else {
-
-            return res.json({
-                status: true,
-                message: 'sucess',
-                data,
-            })
-        }
-    })
+                return res.json({
+                    status: true,
+                    message: 'sucess',
+                    data,
+                })
+            }
+        })
+    }
 }
-module.exports.getEmployeeInfo = (req, res) => {
-    service.getEmployeeInfo(req, (err, data) => {
-        if (err) {
+catch (err) {
+    console.log("ERROR: while sending the message",err);
 
-            return err;
-        } else {
+}
+try {
+    module.exports.getEmployeeInfo = (req, res) => {
+        service.getEmployeeInfo(req, (err, data) => {
+            if (err) {
 
-            return res.json({
-                status: true,
-                message: 'sucess',
-                data,
-            })
-        }
-    })
+                return err;
+            } else {
+
+                return res.json({
+                    status: true,
+                    message: 'sucess',
+                    data,
+                })
+            }
+        })
+    }
+}
+catch (err) {
+    console.log("ERROR: while sending the message",err);
+
 }
