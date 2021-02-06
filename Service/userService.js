@@ -27,5 +27,18 @@ module.exports.getEmployeeInfo = (req, callback) => {
     })
 
 }
+module.exports.deleteEmployeeInfo = (req, callback) => {
+
+    data.deleteEmployeeInfo(req, (err, data) => {
+        if (err) {
+            return callback(err)
+
+        } else {
+            return callback(null, data)
+        }
+
+    })
+
+}
 
 

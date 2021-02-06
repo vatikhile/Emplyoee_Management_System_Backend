@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { addEmployee } = require('../Service/userService');
+
 
 
 //user Schema
@@ -14,7 +14,8 @@ const userSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        require: true
+        require: true,
+        unique:true
     },
     createOn: {
         type: Date,
@@ -48,6 +49,18 @@ exports.getEmployeeInfo = (req, callback) => {
         return callback(err)
     })
 }
+
+/* Deleting the entry of employee by passing the id of the record in the database */
+exports.deleteEmployeeInfo = (req, callback) => {
+    console.log("delte",req.body);
+    UserModel.deleteOne(req.body).then((result) => {
+        return callback(null, result)
+
+    }).catch((err) => {
+        return callback(err)
+    })
+}
+
 
 // exports.updateEmployee = (req, callback) => {
 //     // const id=req.params.id;

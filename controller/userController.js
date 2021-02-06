@@ -42,3 +42,24 @@ catch (err) {
     console.log("ERROR: while sending the message",err);
 
 }
+try {
+    module.exports.deleteEmployeeInfo = (req, res) => {
+        service.deleteEmployeeInfo(req, (err, data) => {
+            if (err) {
+
+                return err;
+            } else {
+
+                return res.json({
+                    status: true,
+                    message: 'sucess',
+                    data,
+                })
+            }
+        })
+    }
+}
+catch (err) {
+    console.log("ERROR: while sending the message",err);
+
+}
