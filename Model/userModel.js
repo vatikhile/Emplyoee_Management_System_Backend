@@ -15,6 +15,15 @@ const userSchema = mongoose.Schema({
         require: true,
         unique: true
     },
+    companyName: {
+        type: String
+    },
+    mobileNumber: {
+        type: Number
+    },
+    address: {
+        type: String
+    },
     createOn: {
         type: Date,
         default: Date.now()
