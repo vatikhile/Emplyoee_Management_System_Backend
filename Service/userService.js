@@ -1,9 +1,9 @@
 
-const data = require('../Model/userModel');
+const model = require('../Model/userModel');
 
 module.exports.addEmployee = (req, callback) => {
 
-    data.addEmployee(req, (err, data) => {
+    model.addEmployee(req, (err, data) => {
         if (err) {
             return callback(err)
 
@@ -16,7 +16,7 @@ module.exports.addEmployee = (req, callback) => {
 }
 module.exports.getEmployeeInfo = (req, callback) => {
 
-    data.getEmployeeInfo(req, (err, data) => {
+    model.getEmployeeInfo(req, (err, data) => {
         if (err) {
             return callback(err)
 
@@ -29,7 +29,21 @@ module.exports.getEmployeeInfo = (req, callback) => {
 }
 module.exports.deleteEmployeeInfo = (req, callback) => {
 
-    data.deleteEmployeeInfo(req, (err, data) => {
+    model.deleteEmployeeInfo({ "_id": req.params.id }, (err, data) => {
+        console.log("dd", req.body._id);
+        if (err) {
+            return callback(err)
+
+        } else {
+            return callback(null, data)
+        }
+
+    })
+}
+module.exports.updateEmployee = (req, callback) => {
+
+    model.updateEmployee(({ _id: req.params.id }, req.body), (err, data) => {
+
         if (err) {
             return callback(err)
 
@@ -40,5 +54,20 @@ module.exports.deleteEmployeeInfo = (req, callback) => {
     })
 
 }
+module.exports.getSingleEmployeeInfo = (req, callback) => {
+
+    model.getSingleEmployeeInfo({ "_id": req.params.id }, (err, data) => {
+        if (err) {
+            return callback(err)
+
+        } else {
+            return callback(null, data)
+        }
+
+    })
+
+}
+
+
 
 

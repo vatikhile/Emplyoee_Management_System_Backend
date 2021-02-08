@@ -3,7 +3,8 @@ const route = express.Router();
 const controller = require('../controller/userController')
 
 route.post('/employee/add', controller.addEmployee)
-route.get('/employee/read', controller.getEmployeeInfo)
-route.delete('/employee/deleteInfo', controller.deleteEmployeeInfo)
-
+route.get('/singleemployee/read:id', controller.getSingleEmployeeInfo)
+route.get('/allemployee/read', controller.getEmployeeInfo)
+route.delete('/employee/deleteInfo:id', controller.deleteEmployeeInfo)
+route.put('/employee/updateInfo:id', controller.updateEmployee)
 module.exports = route

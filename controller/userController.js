@@ -3,6 +3,7 @@ const service = require('../Service/userService');
 try {
     module.exports.addEmployee = (req, res) => {
         service.addEmployee(req, (err, data) => {
+
             if (err) {
 
                 return err;
@@ -10,7 +11,7 @@ try {
 
                 return res.json({
                     status: true,
-                    message: 'sucess',
+                    message: 'Sucessfully Record Added',
                     data,
                 })
             }
@@ -18,7 +19,7 @@ try {
     }
 }
 catch (err) {
-    console.log("ERROR: while sending the message",err);
+    console.log("ERROR: while sending the message", err);
 
 }
 try {
@@ -31,7 +32,7 @@ try {
 
                 return res.json({
                     status: true,
-                    message: 'sucess',
+                    message: 'Sucessfully Get Records',
                     data,
                 })
             }
@@ -39,12 +40,13 @@ try {
     }
 }
 catch (err) {
-    console.log("ERROR: while sending the message",err);
+    console.log("ERROR: while sending the message", err);
 
 }
 try {
     module.exports.deleteEmployeeInfo = (req, res) => {
         service.deleteEmployeeInfo(req, (err, data) => {
+
             if (err) {
 
                 return err;
@@ -52,7 +54,7 @@ try {
 
                 return res.json({
                     status: true,
-                    message: 'sucess',
+                    message: 'Sucessfully Deleted',
                     data,
                 })
             }
@@ -60,6 +62,51 @@ try {
     }
 }
 catch (err) {
-    console.log("ERROR: while sending the message",err);
+    console.log("ERROR: while sending the message", err);
+
+}
+try {
+    module.exports.updateEmployee = (req, res) => {
+        service.updateEmployee(req, (err, data) => {
+            console.log("req,", req);
+            if (err) {
+
+                return err;
+            } else {
+
+                return res.json({
+                    status: true,
+                    message: 'Sucessfully Updated',
+                    data,
+                })
+            }
+        })
+    }
+}
+catch (err) {
+    console.log("ERROR: while sending the message", err);
+
+}
+
+try {
+    module.exports.getSingleEmployeeInfo = (req, res) => {
+        service.getSingleEmployeeInfo(req, (err, data) => {
+
+            if (err) {
+
+                return err;
+            } else {
+
+                return res.json({
+                    status: true,
+                    message: 'Sucessfully Updated',
+                    data,
+                })
+            }
+        })
+    }
+}
+catch (err) {
+    console.log("ERROR: while sending the message", err);
 
 }
